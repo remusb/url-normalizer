@@ -23,6 +23,7 @@ namespace URL;
  * @author Glen Scott <glen@glenscott.co.uk>
  */
 class Normalizer {
+    private $domain;
     private $url;
     private $scheme;
     private $host;
@@ -37,7 +38,7 @@ class Normalizer {
 
     public function __construct( $url=null ) {
         if ( $url ) {
-        	$this->setUrl( $url );
+            $this->setUrl( $url );
         }
     }
 
@@ -52,6 +53,10 @@ class Normalizer {
             }
         }
         return $qs;
+    }
+
+    public function getDomain() {
+        return $this->domain;
     }
 
     public function getUrl() {
@@ -216,6 +221,7 @@ class Normalizer {
         }
 
         $this->setUrl( $this->scheme . $authority . $this->path . $this->query . $this->fragment );
+        $this->domain = $this->scheme . ':' . $authority;
 
         return $this->getUrl();
     }
