@@ -221,7 +221,7 @@ class Normalizer {
         }
 
         $this->setUrl( $this->scheme . $authority . $this->path . $this->query . $this->fragment );
-        $this->domain = $this->scheme . ':' . $authority;
+        $this->domain = $this->scheme . ':' . $authority . "/";
 
         return $this->getUrl();
     }
